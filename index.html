@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>машеньке подарок 💖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #ffe6e6;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 15px 25px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 200px;
+        }
+
+        .yes-btn {
+            background-color: #f87a7a;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .no-btn {
+            background-color: #444;
+            color: white;
+            border-radius: 10px;
+            position: absolute;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .heart {
+            font-size: 50px;
+            animation: heartbeat 1s infinite alternate;
+        }
+
+        @keyframes heartbeat {
+            from { transform: scale(1); }
+            to { transform: scale(1.2); }
+        }
+
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 20px;
+            }
+            
+            button {
+                font-size: 18px;
+                width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>ты меня любишь?</h2>
+    <div class="buttons">
+        <button class="yes-btn" onclick="showLove()">люблю ❤️</button>
+        <button class="no-btn" onclick="runAway(this)">не иди ты 💔</button>
+    </div>
+
+    <div id="love-message" class="hidden">
+        <h2>я тя тоже хахах)! 😘</h2>
+        <div class="heart">❤️</div>
+    </div>
+
+    <script>
+        function showLove() {
+            document.querySelector(".buttons").classList.add("hidden");
+            document.getElementById("love-message").classList.remove("hidden");
+        }
+
+        function runAway(button) {
+            let x = Math.random() * (window.innerWidth - button.clientWidth);
+            let y = Math.random() * (window.innerHeight - button.clientHeight);
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+    </script>
+
+</body>
+</html>
